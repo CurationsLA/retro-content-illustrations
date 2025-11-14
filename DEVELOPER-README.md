@@ -273,7 +273,13 @@ class GoldenBoySVGRenderer {
     filter.appendChild(blend);
     filter.appendChild(opacity);
 
-    svg.appendChild(filter);
+    // Ensure <defs> exists, create if not
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svg.insertBefore(defs, svg.firstChild);
+    }
+    defs.appendChild(filter);
     element.setAttribute('filter', 'url(#grain)');
   }
 
