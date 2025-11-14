@@ -1,0 +1,351 @@
+{
+  "$schema": "https://schemas.tokens.studio/1.0.0/token-set.schema.json",
+  "name": "CurationsLA Golden Boy 4.0",
+  "version": "4.0.0",
+  "description": "Figma Design Token Set for the CurationsLA Retro Poster Brutalist System",
+  "tokens": {
+    "color": {
+      "palette": {
+        "mindaro": {
+          "value": "#ebf99a",
+          "type": "color",
+          "description": "Retro pastel yellow - use for vibrant, energetic sections"
+        },
+        "persian-pink": {
+          "value": "#ff79cb",
+          "type": "color",
+          "description": "Synth pop pink - use for creative, cultural sections"
+        },
+        "medium-slate-blue": {
+          "value": "#8b5cf6",
+          "type": "color",
+          "description": "Modernized periwinkle - use for tech, innovation sections"
+        },
+        "vivid-sky-blue": {
+          "value": "#4cc9f0",
+          "type": "color",
+          "description": "Ocean signage blue - use for outdoor, lifestyle sections"
+        },
+        "seasalt": {
+          "value": "#f8f8f8",
+          "type": "color",
+          "description": "Newsprint light - use for backgrounds, subtle fills"
+        },
+        "black": {
+          "value": "#000000",
+          "type": "color",
+          "description": "Pure black - use for outlines, frames, shadows, text strokes"
+        },
+        "white": {
+          "value": "#FFFFFF",
+          "type": "color",
+          "description": "Pure white - use for text fills"
+        }
+      },
+      "semantic": {
+        "frame-stroke": {
+          "value": "{color.palette.black}",
+          "type": "color",
+          "description": "Frame border color"
+        },
+        "shadow": {
+          "value": "{color.palette.black}",
+          "type": "color",
+          "description": "Hard-edge shadow block color"
+        },
+        "text-fill": {
+          "value": "{color.palette.white}",
+          "type": "color",
+          "description": "Typography fill color"
+        },
+        "text-stroke": {
+          "value": "{color.palette.black}",
+          "type": "color",
+          "description": "Typography outline color"
+        },
+        "icon-outline": {
+          "value": "{color.palette.black}",
+          "type": "color",
+          "description": "Icon outline color"
+        }
+      }
+    },
+    "spacing": {
+      "frame": {
+        "stroke-width": {
+          "value": "4px",
+          "type": "dimension",
+          "description": "Frame border width"
+        },
+        "corner-radius": {
+          "value": "0px",
+          "type": "dimension",
+          "description": "Frame corner radius (always 0)"
+        }
+      },
+      "shadow": {
+        "offset-x": {
+          "value": "24px",
+          "type": "dimension",
+          "description": "Shadow horizontal offset"
+        },
+        "offset-y": {
+          "value": "24px",
+          "type": "dimension",
+          "description": "Shadow vertical offset"
+        },
+        "blur": {
+          "value": "0px",
+          "type": "dimension",
+          "description": "Shadow blur (always 0 for hard edge)"
+        }
+      },
+      "left-bar": {
+        "width": {
+          "value": "60%",
+          "type": "dimension",
+          "description": "Left bar width as percentage of canvas"
+        },
+        "text-padding-left": {
+          "value": "80px",
+          "type": "dimension",
+          "description": "Minimum text padding from left edge"
+        },
+        "text-padding-right": {
+          "value": "120px",
+          "type": "dimension",
+          "description": "Maximum text padding from left edge"
+        }
+      },
+      "icon-cluster": {
+        "width": {
+          "value": "40%",
+          "type": "dimension",
+          "description": "Icon zone width as percentage of canvas"
+        }
+      },
+      "outline": {
+        "primary": {
+          "value": "4px",
+          "type": "dimension",
+          "description": "Primary outline width for icons and major shapes"
+        },
+        "secondary": {
+          "value": "3px",
+          "type": "dimension",
+          "description": "Secondary outline width for minor internal lines"
+        }
+      }
+    },
+    "sizing": {
+      "canvas": {
+        "aspect-ratio": {
+          "value": "3.4:1",
+          "type": "other",
+          "description": "Ultra-wide canvas aspect ratio"
+        },
+        "width": {
+          "value": "3400px",
+          "type": "dimension",
+          "description": "Recommended canvas width"
+        },
+        "height": {
+          "value": "1000px",
+          "type": "dimension",
+          "description": "Recommended canvas height"
+        }
+      },
+      "icon": {
+        "primary-size": {
+          "value": "50%",
+          "type": "dimension",
+          "description": "Primary icon size relative to icon zone"
+        },
+        "primary-pop": {
+          "value": "18%",
+          "type": "dimension",
+          "description": "Primary icon pop-out above frame"
+        },
+        "secondary-size-min": {
+          "value": "60%",
+          "type": "dimension",
+          "description": "Minimum secondary icon size relative to primary"
+        },
+        "secondary-size-max": {
+          "value": "75%",
+          "type": "dimension",
+          "description": "Maximum secondary icon size relative to primary"
+        }
+      }
+    },
+    "typography": {
+      "section-title": {
+        "font-family": {
+          "value": "Futura Extra Bold, Gotham Black, sans-serif",
+          "type": "fontFamily",
+          "description": "Heavy geometric sans-serif font stack"
+        },
+        "font-weight": {
+          "value": "900",
+          "type": "fontWeight",
+          "description": "Font weight (always black/900)"
+        },
+        "text-case": {
+          "value": "uppercase",
+          "type": "textCase",
+          "description": "Text case (always uppercase)"
+        },
+        "letter-spacing": {
+          "value": "-3%",
+          "type": "letterSpacing",
+          "description": "Tight letter spacing"
+        },
+        "fill": {
+          "value": "{color.semantic.text-fill}",
+          "type": "color",
+          "description": "Text fill color"
+        },
+        "stroke-color": {
+          "value": "{color.semantic.text-stroke}",
+          "type": "color",
+          "description": "Text stroke color"
+        },
+        "stroke-width": {
+          "value": "4px",
+          "type": "dimension",
+          "description": "Text stroke width"
+        },
+        "stroke-align": {
+          "value": "outside",
+          "type": "other",
+          "description": "Text stroke alignment"
+        }
+      }
+    },
+    "effects": {
+      "shadow": {
+        "hard-block": {
+          "value": {
+            "type": "dropShadow",
+            "color": "{color.semantic.shadow}",
+            "offsetX": "{spacing.shadow.offset-x}",
+            "offsetY": "{spacing.shadow.offset-y}",
+            "blur": "{spacing.shadow.blur}",
+            "spread": "0px"
+          },
+          "type": "boxShadow",
+          "description": "Hard-edge brutalist shadow block"
+        }
+      },
+      "texture": {
+        "retro-grain": {
+          "value": {
+            "type": "noise",
+            "opacity": "3%",
+            "scale": "fine"
+          },
+          "type": "other",
+          "description": "Subtle retro grain texture (apply to left bar only)"
+        }
+      }
+    },
+    "stroke": {
+      "frame": {
+        "value": {
+          "color": "{color.semantic.frame-stroke}",
+          "width": "{spacing.frame.stroke-width}",
+          "join": "miter",
+          "cap": "butt"
+        },
+        "type": "border",
+        "description": "Frame border style"
+      },
+      "icon-outline": {
+        "value": {
+          "color": "{color.semantic.icon-outline}",
+          "width": "{spacing.outline.primary}",
+          "join": "miter",
+          "cap": "round"
+        },
+        "type": "border",
+        "description": "Icon outline style"
+      }
+    },
+    "composition": {
+      "layout": {
+        "grid-type": {
+          "value": "golden-boy-4.0",
+          "type": "other",
+          "description": "Golden Boy 4.0 grid system"
+        },
+        "left-bar-align": {
+          "value": "left",
+          "type": "other",
+          "description": "Text alignment in left bar"
+        },
+        "vertical-align": {
+          "value": "center",
+          "type": "other",
+          "description": "Vertical text alignment"
+        }
+      }
+    }
+  },
+  "sets": {
+    "core": [
+      "color",
+      "spacing",
+      "sizing",
+      "typography",
+      "effects",
+      "stroke",
+      "composition"
+    ]
+  },
+  "metadata": {
+    "system": "CurationsLA Golden Boy 4.0",
+    "architecture": "Retro Poster Brutalist System",
+    "philosophy": "Editorial brutalism reimagined through Los Angeles retro poster culture",
+    "inspiration": [
+      "LA street posters",
+      "1960s screenprint culture",
+      "Mid-century film festival graphics",
+      "Public transit signage",
+      "SoCal print culture"
+    ],
+    "prohibitions": [
+      "No gradients",
+      "No rounded corners",
+      "No soft shadows",
+      "No photorealism",
+      "No lighting effects",
+      "No glow",
+      "No floating elements"
+    ],
+    "invariants": [
+      "3.4:1 ultra-wide format",
+      "60/40 left bar to icon zone split",
+      "4px black outlines everywhere",
+      "Zero corner radius",
+      "Hard-edge shadows only",
+      "Flat color fields only",
+      "Heavy geometric sans-serif typography",
+      "Primary icon pops 18% above frame",
+      "Chunky geometric silhouettes"
+    ]
+  },
+  "instructions": {
+    "usage": "Apply these tokens in Figma using the Tokens Studio plugin. All tokens are non-negotiable and must be followed precisely to maintain Golden Boy 4.0 architectural integrity.",
+    "workflow": [
+      "1. Import this token set into Tokens Studio for Figma",
+      "2. Apply the core token set to your design file",
+      "3. Use palette colors only for left bar and icon fills",
+      "4. Apply section-title typography style to all section labels",
+      "5. Use hard-block shadow effect on all frames",
+      "6. Apply retro-grain texture only to left bar interior",
+      "7. Maintain 60% left bar width and 40% icon zone width",
+      "8. Ensure primary icon extends 18% above frame boundary",
+      "9. Never deviate from the established prohibitions"
+    ]
+  }
+}
