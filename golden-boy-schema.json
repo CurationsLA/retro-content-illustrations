@@ -132,7 +132,7 @@
         },
         "case": {
           "type": "string",
-          "enum": ["UPPERCASE"],
+          "enum": ["uppercase"],
           "description": "Text case (always uppercase)"
         },
         "fill": {
