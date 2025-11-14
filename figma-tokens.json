@@ -265,7 +265,7 @@
           "color": "{color.semantic.icon-outline}",
           "width": "{spacing.outline.primary}",
           "join": "miter",
-          "cap": "round"
+          "cap": "butt"
         },
         "type": "border",
         "description": "Icon outline style"
