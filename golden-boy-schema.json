@@ -99,7 +99,7 @@
         },
         "color": {
           "type": "string",
-          "enum": ["#ebf99a", "#ff79cb", "#8b5cf6", "#4cc9f0", "#f8f8f8"],
+          "enum": ["#ebf99a", "#ff79cb", "#8b5cf6", "#4cc9f0", "#f8f8f8", "#000000", "#FFFFFF"],
           "description": "Bar fill color from approved palette"
         },
         "texture": {
