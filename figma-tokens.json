@@ -44,27 +44,27 @@
       },
       "semantic": {
         "frame-stroke": {
-          "value": "{color.palette.black}",
+          "value": "#000000",
           "type": "color",
           "description": "Frame border color"
         },
         "shadow": {
-          "value": "{color.palette.black}",
+          "value": "#000000",
           "type": "color",
           "description": "Hard-edge shadow block color"
         },
         "text-fill": {
-          "value": "{color.palette.white}",
+          "value": "#FFFFFF",
           "type": "color",
           "description": "Typography fill color"
         },
         "text-stroke": {
-          "value": "{color.palette.black}",
+          "value": "#000000",
           "type": "color",
           "description": "Typography outline color"
         },
         "icon-outline": {
-          "value": "{color.palette.black}",
+          "value": "#000000",
           "type": "color",
           "description": "Icon outline color"
         }
