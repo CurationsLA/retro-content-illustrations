@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schemas.tokens.studio/1.0.0/token-set.schema.json",
+  "$schema": "./token-set.schema.json",
   "name": "CurationsLA Golden Boy 4.0",
   "version": "4.0.0",
   "description": "Figma Design Token Set for the CurationsLA Retro Poster Brutalist System",

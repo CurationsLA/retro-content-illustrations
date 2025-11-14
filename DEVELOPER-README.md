@@ -392,7 +392,7 @@ class GoldenBoyCanvasRenderer {
     this.ctx.lineWidth = 4;
     this.ctx.lineJoin = 'miter';
     this.ctx.lineCap = 'butt';
-    this.ctx.strokeRect(2, 2, this.config.canvas.width - 4, this.config.canvas.height - 4);
+    this.ctx.strokeRect(0, 0, this.config.canvas.width, this.config.canvas.height);
   }
 
   renderLeftBar() {
@@ -405,17 +405,29 @@ class GoldenBoyCanvasRenderer {
   }
 
   applyGrainTexture(x, y, width, height) {
-    const imageData = this.ctx.getImageData(x, y, width, height);
-    const data = imageData.data;
+    // Create an offscreen canvas for the grain texture
+    const grainCanvas = document.createElement('canvas');
+    grainCanvas.width = width;
+    grainCanvas.height = height;
+    const grainCtx = grainCanvas.getContext('2d');
 
-    for (let i = 0; i < data.length; i += 4) {
-      const noise = (Math.random() - 0.5) * 10;
-      data[i] += noise;     // R
-      data[i + 1] += noise; // G
-      data[i + 2] += noise; // B
+    // Generate grain/noise image data
+    const grainImageData = grainCtx.createImageData(width, height);
+    const grainData = grainImageData.data;
+    for (let i = 0; i < grainData.length; i += 4) {
+      const value = Math.floor(Math.random() * 256); // random grayscale
+      grainData[i] = value;     // R
+      grainData[i + 1] = value; // G
+      grainData[i + 2] = value; // B
+      grainData[i + 3] = 255;   // A
     }
+    grainCtx.putImageData(grainImageData, 0, 0);
 
-    this.ctx.putImageData(imageData, x, y);
+    // Overlay the grain texture at 2-4% opacity
+    this.ctx.save();
+    this.ctx.globalAlpha = 0.03; // Use 3% opacity as default
+    this.ctx.drawImage(grainCanvas, x, y);
+    this.ctx.restore();
   }
 
   renderTypography() {
@@ -496,6 +508,21 @@ Validates the current configuration against Golden Boy 4.0 schema.
 **Returns:**
 - `true` if valid, throws error if invalid
 
+> **Note:** The `validate()` method must be implemented by developers. Below is an example implementation:
+
+```js
+validate() {
+  if (!this.config.sectionTitle || typeof this.config.sectionTitle !== 'string') {
+    throw new Error('Invalid sectionTitle');
+  }
+  if (!this.config.primaryIcon || typeof this.config.primaryIcon.type !== 'string') {
+    throw new Error('Invalid primaryIcon');
+  }
+  // Add further schema checks as needed...
+  return true;
+}
+```
+
 ##### `export(format, filename)`
 
 Exports the rendered graphic to a file.
@@ -503,6 +530,8 @@ Exports the rendered graphic to a file.
 **Parameters:**
 - `format` (String): Export format ('svg', 'png', 'pdf')
 - `filename` (String): Output filename
+
+> **Note:** The `export()` method is planned for a future NPM package release and is not yet available in the current implementation. Please check the package changelog for updates.
 
 ---
 
@@ -600,11 +629,13 @@ const customDivider = new GoldenBoyRenderer({
 
 ### Schema Validation
 
-Use the provided JSON schema to validate configurations:
+Use the provided JSON schema to validate configurations.  
+**Place `golden-boy-schema.json` in the `schemas/` directory at the project root.**  
+Import the schema using the following path:
 
 ```javascript
 import Ajv from 'ajv';
-import schema from './golden-boy-schema.json';
+import schema from './schemas/golden-boy-schema.json';
 
 const ajv = new Ajv();
 const validate = ajv.compile(schema);
@@ -624,16 +655,31 @@ function validateGoldenBoyConfig(config) {
 ```javascript
 import { expect } from 'chai';
 import { GoldenBoyRenderer } from './goldenboy-renderer';
-import { compareImages } from 'image-comparison-tool';
+import pixelmatch from 'pixelmatch';
+import fs from 'fs';
+import { PNG } from 'pngjs';
 
 describe('Golden Boy Renderer', () => {
   it('should render EATS divider correctly', async () => {
     const renderer = new GoldenBoyRenderer(eatsConfig);
-    const output = renderer.render('png');
-    const baseline = './test/baselines/eats-divider.png';
+    const outputBuffer = renderer.render('png'); // Should be a PNG buffer
+    const baselineBuffer = fs.readFileSync('./test/baselines/eats-divider.png');
 
-    const diff = await compareImages(output, baseline);
-    expect(diff).to.be.below(0.01); // Less than 1% difference
+    const outputPNG = PNG.sync.read(outputBuffer);
+    const baselinePNG = PNG.sync.read(baselineBuffer);
+
+    const { width, height } = outputPNG;
+    const diffPixels = pixelmatch(
+      outputPNG.data,
+      baselinePNG.data,
+      null,
+      width,
+      height,
+      { threshold: 0.1 }
+    );
+    const totalPixels = width * height;
+    const diffRatio = diffPixels / totalPixels;
+    expect(diffRatio).to.be.below(0.01); // Less than 1% difference
   });
 });
 ```
@@ -643,7 +689,6 @@ describe('Golden Boy Renderer', () => {
 ```javascript
 function checkProhibitions(config) {
   const prohibitions = {
-    gradients: /gradient/i,
     roundedCorners: config.frame.cornerRadius > 0,
     softShadows: config.shadow.blur > 0,
     wrongOutlineWidth: config.iconCluster.outlineWidth !== 4

@@ -307,7 +307,10 @@
         "secondary": 2
       },
       "primary_icon": {
-        "size_percent": 0.5,
+        "size_percent_range": [
+          0.45,
+          0.55
+        ],
         "pop_above_frame_percent": 0.18,
         "outline_width": 4
       },
@@ -562,7 +565,7 @@
   },
   "version_history": {
     "4.0": {
-      "release_date": "2025-01-14",
+      "release_date": "2025-11-01",
       "changes": [
         "Initial release of Golden Boy 4.0",
         "Complete architectural specification",
@@ -619,7 +622,7 @@
   },
   "metadata": {
     "schema_version": "4.0",
-    "last_updated": "2025-01-14",
+    "last_updated": "2025-11-01",
     "agent_type": "specialized_renderer",
     "domain": "editorial_design",
     "geographic_focus": "Los Angeles",
