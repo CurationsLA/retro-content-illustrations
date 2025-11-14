@@ -1,0 +1,408 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://curationsla.com/schemas/golden-boy-v4.json",
+  "title": "CurationsLA Golden Boy 4.0 Design System",
+  "description": "JSON Schema for the CurationsLA Retro Poster Brutalist System (Golden Boy 4.0)",
+  "type": "object",
+  "required": ["canvas", "frame", "shadow", "leftBar", "typography", "iconCluster", "palette"],
+  "properties": {
+    "canvas": {
+      "type": "object",
+      "description": "Canvas dimensions and aspect ratio",
+      "required": ["ratio", "width", "height"],
+      "properties": {
+        "ratio": {
+          "type": "string",
+          "enum": ["3.4:1"],
+          "description": "Ultra-wide aspect ratio"
+        },
+        "width": {
+          "type": "number",
+          "default": 3400,
+          "description": "Canvas width in units"
+        },
+        "height": {
+          "type": "number",
+          "default": 1000,
+          "description": "Canvas height in units"
+        }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "description": "Frame border specifications",
+      "required": ["strokeWidth", "color", "cornerRadius", "strokeJoin", "strokeCap"],
+      "properties": {
+        "strokeWidth": {
+          "type": "number",
+          "enum": [4],
+          "description": "Frame border width in pixels"
+        },
+        "color": {
+          "type": "string",
+          "enum": ["#000000"],
+          "description": "Frame border color (pure black)"
+        },
+        "cornerRadius": {
+          "type": "number",
+          "enum": [0],
+          "description": "Corner radius (always 0)"
+        },
+        "strokeJoin": {
+          "type": "string",
+          "enum": ["miter"],
+          "description": "Stroke join style"
+        },
+        "strokeCap": {
+          "type": "string",
+          "enum": ["butt"],
+          "description": "Stroke cap style"
+        }
+      }
+    },
+    "shadow": {
+      "type": "object",
+      "description": "Hard-edge shadow block specifications",
+      "required": ["offsetX", "offsetY", "color", "blur"],
+      "properties": {
+        "offsetX": {
+          "type": "number",
+          "default": 24,
+          "description": "Horizontal shadow offset in units"
+        },
+        "offsetY": {
+          "type": "number",
+          "default": 24,
+          "description": "Vertical shadow offset in units"
+        },
+        "color": {
+          "type": "string",
+          "enum": ["#000000"],
+          "description": "Shadow color (pure black)"
+        },
+        "blur": {
+          "type": "number",
+          "enum": [0],
+          "description": "Shadow blur (always 0 - hard edge)"
+        }
+      }
+    },
+    "leftBar": {
+      "type": "object",
+      "description": "Left bar color block specifications",
+      "required": ["widthPercent", "color", "texture", "textureOpacity"],
+      "properties": {
+        "widthPercent": {
+          "type": "number",
+          "enum": [60],
+          "description": "Width as percentage of canvas"
+        },
+        "color": {
+          "type": "string",
+          "enum": ["#ebf99a", "#ff79cb", "#8b5cf6", "#4cc9f0", "#f8f8f8", "#000000", "#FFFFFF"],
+          "description": "Bar fill color from approved palette"
+        },
+        "texture": {
+          "type": "string",
+          "enum": ["retro_grain"],
+          "description": "Texture type (only retro grain allowed)"
+        },
+        "textureOpacity": {
+          "type": "number",
+          "minimum": 0.02,
+          "maximum": 0.04,
+          "description": "Grain texture opacity (2-4%)"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "description": "Typography specifications",
+      "required": ["fontFamily", "weight", "case", "fill", "strokeColor", "strokeWidth", "strokeAlignment", "tracking", "verticalAlign", "horizontalAlign"],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "description": "Heavy geometric sans-serif font",
+          "examples": ["Futura Extra Bold", "Gotham Black", "Heavy Geometric Sans"]
+        },
+        "weight": {
+          "type": "number",
+          "enum": [900],
+          "description": "Font weight (always 900)"
+        },
+        "case": {
+          "type": "string",
+          "enum": ["uppercase"],
+          "description": "Text case (always uppercase)"
+        },
+        "fill": {
+          "type": "string",
+          "enum": ["#FFFFFF"],
+          "description": "Text fill color (white)"
+        },
+        "strokeColor": {
+          "type": "string",
+          "enum": ["#000000"],
+          "description": "Text outline color (black)"
+        },
+        "strokeWidth": {
+          "type": "number",
+          "enum": [4],
+          "description": "Text outline width in pixels"
+        },
+        "strokeAlignment": {
+          "type": "string",
+          "enum": ["outside"],
+          "description": "Stroke alignment"
+        },
+        "tracking": {
+          "type": "number",
+          "minimum": -0.04,
+          "maximum": -0.02,
+          "description": "Letter spacing as percentage (-2% to -4%)"
+        },
+        "verticalAlign": {
+          "type": "string",
+          "enum": ["center"],
+          "description": "Vertical alignment within left bar"
+        },
+        "horizontalAlign": {
+          "type": "string",
+          "enum": ["left"],
+          "description": "Horizontal alignment (flush-left)"
+        },
+        "padding": {
+          "type": "number",
+          "minimum": 80,
+          "maximum": 120,
+          "description": "Optional padding from frame edge. If not specified, defaults to 100."
+        }
+      }
+    },
+    "iconCluster": {
+      "type": "object",
+      "description": "Icon cluster specifications",
+      "required": ["primaryIcon", "secondaryIcons", "outlineWidth", "style"],
+      "properties": {
+        "primaryIcon": {
+          "type": "object",
+          "required": ["popPercent", "sizePercent", "description", "fill"],
+          "properties": {
+            "popPercent": {
+              "type": "number",
+              "enum": [0.18],
+              "description": "Pop-out above frame (18%)"
+            },
+            "sizePercent": {
+              "type": "number",
+              "minimum": 0.45,
+              "maximum": 0.55,
+              "description": "Size relative to icon zone (45-55%)"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of primary icon"
+            },
+            "fill": {
+              "type": "string",
+              "enum": ["#ebf99a", "#ff79cb", "#8b5cf6", "#4cc9f0", "#f8f8f8"],
+              "description": "Icon fill color from palette"
+            }
+          }
+        },
+        "secondaryIcons": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Two secondary supporting icons",
+          "items": {
+            "type": "object",
+            "required": ["sizePercent", "description", "fill"],
+            "properties": {
+              "sizePercent": {
+                "type": "number",
+                "minimum": 0.6,
+                "maximum": 0.75,
+                "description": "Size relative to primary icon (60-75%)"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description of secondary icon"
+              },
+              "fill": {
+                "type": "string",
+                "enum": ["#ebf99a", "#ff79cb", "#8b5cf6", "#4cc9f0", "#f8f8f8"],
+                "description": "Icon fill color from palette"
+              }
+            }
+          }
+        },
+        "outlineWidth": {
+          "type": "number",
+          "enum": [4],
+          "description": "Icon outline width (4px)"
+        },
+        "style": {
+          "type": "string",
+          "enum": ["geometric", "blocky", "chunky", "mid-century"],
+          "description": "Icon style characteristics"
+        }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "description": "Official CurationsLA color palette",
+      "required": ["mindaro", "persianPink", "mediumSlateBlue", "vividSkyBlue", "seasalt", "black"],
+      "properties": {
+        "mindaro": {
+          "type": "string",
+          "enum": ["#ebf99a"],
+          "description": "Retro pastel yellow"
+        },
+        "persianPink": {
+          "type": "string",
+          "enum": ["#ff79cb"],
+          "description": "Synth pop pink"
+        },
+        "mediumSlateBlue": {
+          "type": "string",
+          "enum": ["#8b5cf6"],
+          "description": "Modernized periwinkle"
+        },
+        "vividSkyBlue": {
+          "type": "string",
+          "enum": ["#4cc9f0"],
+          "description": "Ocean signage blue"
+        },
+        "seasalt": {
+          "type": "string",
+          "enum": ["#f8f8f8"],
+          "description": "Newsprint light"
+        },
+        "black": {
+          "type": "string",
+          "enum": ["#000000"],
+          "description": "Outline, frame, shadow"
+        }
+      }
+    },
+    "prohibitions": {
+      "type": "object",
+      "description": "Absolutely prohibited design elements",
+      "properties": {
+        "gradients": {
+          "type": "boolean",
+          "description": "No gradients allowed"
+        },
+        "roundedCorners": {
+          "type": "boolean",
+          "description": "No rounded corners allowed"
+        },
+        "softShadows": {
+          "type": "boolean",
+          "description": "No soft shadows allowed"
+        },
+        "photorealism": {
+          "type": "boolean",
+          "description": "No photorealism allowed"
+        },
+        "lightingEffects": {
+          "type": "boolean",
+          "description": "No lighting effects allowed"
+        },
+        "glow": {
+          "type": "boolean",
+          "description": "No glow effects allowed"
+        }
+      }
+    },
+    "allOf": [
+      {
+        "not": {
+          "anyOf": [
+            { "properties": { "gradients": { "const": true } }, "required": ["gradients"] },
+            { "properties": { "roundedCorners": { "const": true } }, "required": ["roundedCorners"] },
+            { "properties": { "softShadows": { "const": true } }, "required": ["softShadows"] },
+            { "properties": { "photorealism": { "const": true } }, "required": ["photorealism"] },
+            { "properties": { "lightingEffects": { "const": true } }, "required": ["lightingEffects"] },
+            { "properties": { "glow": { "const": true } }, "required": ["glow"] }
+          ]
+        },
+        "errorMessage": {
+          "not": "Prohibited design elements must not be set to true. Please ensure all prohibitions are set to false."
+        }
+      }
+    ]
+  },
+  "examples": [
+    {
+      "canvas": {
+        "ratio": "3.4:1",
+        "width": 3400,
+        "height": 1000
+      },
+      "frame": {
+        "strokeWidth": 4,
+        "color": "#000000",
+        "cornerRadius": 0,
+        "strokeJoin": "miter",
+        "strokeCap": "butt"
+      },
+      "shadow": {
+        "offsetX": 24,
+        "offsetY": 24,
+        "color": "#000000",
+        "blur": 0
+      },
+      "leftBar": {
+        "widthPercent": 60,
+        "color": "#ff79cb",
+        "texture": "retro_grain",
+        "textureOpacity": 0.03
+      },
+      "typography": {
+        "fontFamily": "Futura Extra Bold",
+        "weight": 900,
+        "case": "UPPERCASE",
+        "fill": "#FFFFFF",
+        "strokeColor": "#000000",
+        "strokeWidth": 4,
+        "strokeAlignment": "outside",
+        "tracking": -0.03,
+        "verticalAlign": "center",
+        "horizontalAlign": "left",
+        "padding": 100
+      },
+      "iconCluster": {
+        "primaryIcon": {
+          "popPercent": 0.18,
+          "sizePercent": 0.5,
+          "description": "Geometric taco icon",
+          "fill": "#ebf99a"
+        },
+        "secondaryIcons": [
+          {
+            "sizePercent": 0.7,
+            "description": "Chunky knife icon",
+            "fill": "#4cc9f0"
+          },
+          {
+            "sizePercent": 0.65,
+            "description": "Blocky fork icon",
+            "fill": "#8b5cf6"
+          }
+        ],
+        "outlineWidth": 4,
+        "style": "geometric"
+      },
+      "palette": {
+        "mindaro": "#ebf99a",
+        "persianPink": "#ff79cb",
+        "mediumSlateBlue": "#8b5cf6",
+        "vividSkyBlue": "#4cc9f0",
+        "seasalt": "#f8f8f8",
+        "black": "#000000"
+      }
+    }
+  ]
+}
