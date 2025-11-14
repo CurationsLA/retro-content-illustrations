@@ -29,7 +29,10 @@ This guide provides developers with everything needed to implement, render, and 
 
 ```javascript
 // Import the Golden Boy renderer
-import { GoldenBoyRenderer } from './goldenboy-renderer';
+// For local development:
+// import { GoldenBoyRenderer } from './goldenboy-renderer';
+// For NPM installation:
+import { GoldenBoyRenderer } from '@curationsla/golden-boy';
 
 // Create a new divider
 const divider = new GoldenBoyRenderer({
