@@ -131,7 +131,7 @@
           "description": "Primary outline width for icons and major shapes"
         },
         "secondary": {
-          "value": "3px",
+          "value": "4px",
           "type": "dimension",
           "description": "Secondary outline width for minor internal lines"
         }
