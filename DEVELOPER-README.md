@@ -34,9 +34,9 @@ import { GoldenBoyRenderer } from './goldenboy-renderer';
 // Create a new divider
 const divider = new GoldenBoyRenderer({
   sectionTitle: 'EATS',
-  primaryIcon: 'taco',
-  secondaryIcons: ['knife', 'fork'],
-  barColor: '#ff79cb', // Persian Pink
+  primaryIcon: { type: 'taco', fill: '#ebf99a' },
+  secondaryIcons: [{ type: 'knife', fill: '#4cc9f0' }, { type: 'fork', fill: '#8b5cf6' }],
+  leftBar: { color: '#ff79cb' },
   canvas: { width: 3400, height: 1000 }
 });
 
